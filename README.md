@@ -4,6 +4,8 @@
 
 ```bash
 pip install virtualenv
+# if the permissions are a problem try:
+# brew install virtualenv
 virtualenv djangoenv
 source djangoenv/bin/activate
 
