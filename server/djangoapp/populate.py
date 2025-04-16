@@ -136,4 +136,3 @@ def initiate():
             year=data['year'],
             price=data['price']
         )
-        
