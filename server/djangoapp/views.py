@@ -1,6 +1,6 @@
 # Uncomment the required imports before adding the code
 
-from django.shortcuts import render
+# from django.shortcuts import render
 # Unused imports kept for future development
 # from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
@@ -75,10 +75,10 @@ def registration(request):
     if not username_exist:
         # Create user in auth_user table
         user = User.objects.create_user(
-            username=username, 
-            first_name=first_name, 
+            username=username,
+            first_name=first_name,
             last_name=last_name,
-            password=password, 
+            password=password,
             email=email
         )
         # Login the user and redirect to list page
@@ -107,7 +107,9 @@ def get_dealer_reviews(request, dealer_id):
         reviews = get_request(endpoint)
         for review_detail in reviews:
             # Unused variable assigned but kept for future reference
-            sentiment_data = analyze_review_sentiments(review_detail['review'])
+            sentiment_data = analyze_review_sentiments(
+                review_detail['review']
+            )
             review_detail['sentiment'] = sentiment_data['sentiment']
         return JsonResponse({"status": 200, "reviews": reviews})
     else:
@@ -132,7 +134,7 @@ def add_review(request):
             return JsonResponse({"status": 200})
         except Exception:  # Specific exception instead of bare except
             return JsonResponse({
-                "status": 401, 
+                "status": 401,
                 "message": "Error in posting review"
             })
     else:
